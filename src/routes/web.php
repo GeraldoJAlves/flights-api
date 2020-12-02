@@ -13,6 +13,7 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return 'teste';
-});
+$router->get('/', 'FlightGroupController@list');
+
+$router->get('/custom', 'FlightGroupController@flights');
+
