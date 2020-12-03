@@ -7,14 +7,22 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class HttpHelper
 {
 
-    public static function notFound()
+    private function createReponseError($data, $code)
     {
-        return new JsonResponse(['message' => 'No route found'], 404);
+        return new JsonResponse(['error' => [
+            'code' =>  $code,
+            'message' => $data,
+        ]], $code);
     }
 
-    public static function badRequest()
+    public function notFound()
     {
-        return new JsonResponse(['message' => 'No route found'], 500);
+        return $this->createReponseError('No route found', 404);
+    }
+
+    public function badRequest()
+    {
+        return $this->createReponseError('Server error', 500);
     }
 
     public static function ok($data)

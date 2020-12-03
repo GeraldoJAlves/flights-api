@@ -2,15 +2,14 @@
 
 namespace App\Exceptions;
 
-use App\Helper\HttpHelper;
-
+use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Validation\ValidationException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -54,11 +53,26 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
         $rendered = parent::render($request, $exception);
+        $message = $this->getMessageByExeception($exception);
+        if (app()->environment('local') && $exception->getMessage()) {
+            $message = $exception->getMessage();
+        }
+
         return new JsonResponse([
             'error' => [
                 'code' => $rendered->getStatusCode(),
-                'message' => $exception->getMessage(),
+                'message' => $message,
             ]
         ], $rendered->getStatusCode());
+    }
+
+    private function getMessageByExeception($e)
+    {
+        switch (get_class($e)) {
+            case NotFoundHttpException::class:
+                return 'Not Found';
+                break;
+        }
+        return 'Server error ocurred';
     }
 }

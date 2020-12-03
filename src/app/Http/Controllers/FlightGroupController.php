@@ -2,41 +2,48 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\FlightsRetriever;
+use App\Services\FlightsRetrieverService;
 use Illuminate\Http\Request;
-use Illuminate\Http\JsonResponse;
 use Laravel\Lumen\Routing\Controller as BaseController;
+use App\Helpers\HttpHelper;
+use Exception;
 
 class FlightGroupController extends BaseController
 {
 
-    private $flightsRetrivier = null;
+    private $flightsRetrieverService = null;
+    private $httpHelper = null;
 
-    public function __construct(FlightsRetriever $flightsRetrivier)
+    public function __construct(FlightsRetrieverService $flightsRetrieverService, HttpHelper $httpHelper)
     {
-        $this->flightsRetrivier = $flightsRetrivier;
+        $this->flightsRetrieverService = $flightsRetrieverService;
+        $this->httpHelper = $httpHelper;
     }
 
     public function list(Request $request)
     {
-        $filter = $request->getQueryString();
-        $flightsList = $this->flightsRetrivier->getFlights($filter);
-        $groupsList = $this->flightsRetrivier->getFlightsGroups($flightsList);
-        $cheapestGroup = count($groupsList) ? $groupsList[0] : null;
-        return new JsonResponse(array(
-            'flights' => $flightsList,
-            'groups' => $groupsList,
-            'totalGroups' => count($groupsList),
-            'totalFlights' => count($flightsList),
-            'cheapestPrice' => $cheapestGroup ? $cheapestGroup->totalPrice : 0,
-            'cheapestGroup' => $cheapestGroup ? $cheapestGroup->uniqueId : 0,
-        ), 200);
+        try {
+            $filter = $request->getQueryString();
+            $flightsList = $this->flightsRetrieverService->getFlights($filter);
+            $groupsList = $this->flightsRetrieverService->getFlightsGroups();
+            $cheapestGroup = count($groupsList) ? $groupsList[0] : null;
+            return $this->httpHelper->ok(array(
+                'flights' => $flightsList,
+                'groups' => $groupsList,
+                'totalGroups' => count($groupsList),
+                'totalFlights' => count($flightsList),
+                'cheapestPrice' => $cheapestGroup ? $cheapestGroup->totalPrice : 0,
+                'cheapestGroup' => $cheapestGroup ? $cheapestGroup->uniqueId : 0,
+            ));
+        } catch (Exception $e) {
+            return $this->httpHelper->badRequest();
+        }
     }
 
     public function flights(Request $request)
     {
         $filter = $request->getQueryString();
-        $flightsList = $this->flightsRetrivier->getFlights($filter);
+        $flightsList = $this->flightsRetrieverService->getFlights($filter);
         return $flightsList;
     }
 }

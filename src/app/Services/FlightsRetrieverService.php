@@ -6,13 +6,13 @@ use App\Models\Flight;
 use App\Models\FlightGroup;
 use App\Models\FlightWrapper;
 use GuzzleHttp\Client;
-use Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
 
-class FlightsRetriever
+class FlightsRetrieverService
 {
     private $client = null;
     private $flights = null;
     private $filter = '';
+    private $filterChanged = false;
 
     public function __construct()
     {
@@ -23,10 +23,10 @@ class FlightsRetriever
 
     private function requestFlights()
     {
-        $response = $this->client->request('GET', 'flights' . $this->filter);
-        if ($response->getStatusCode() !== 200) {
-            throw new ServiceUnavailableHttpException('Flight api unavailable');
+        if (!$this->filterChanged && !empty($this->flights)) {
+            return;
         }
+        $response = $this->client->request('GET', 'flights' . $this->filter);
         $contentBody = $response->getBody()->getContents();
         $flightsData = json_decode($contentBody, true);
         $this->flights = array_map(function ($flightData) {
@@ -38,6 +38,7 @@ class FlightsRetriever
     {
         if (!empty($filter)) {
             $this->filter = substr($filter, 0, 1) === '?' ? $filter : '?' . $filter;
+            $this->filterChanged = true;
         }
     }
 
@@ -90,6 +91,8 @@ class FlightsRetriever
 
     public function getFlightsGroups()
     {
+        $this->requestFlights();
+
         // Montando os wrappers de inbound e outbound
         $wrappers = $this->makeFlightsWrappers($this->flights);
 
