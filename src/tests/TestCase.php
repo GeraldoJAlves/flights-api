@@ -13,4 +13,14 @@ abstract class TestCase extends BaseTestCase
     {
         return require __DIR__.'/../bootstrap/app.php';
     }
+
+    protected function getFile($file){
+        $pathFile = __DIR__ . '/mocks/files/'.$file;
+
+        if (!file_exists($pathFile)) {
+            new Exception('File not found '.$pathFile);
+        }
+
+        return json_decode(file_get_contents($pathFile), true);
+    }
 }

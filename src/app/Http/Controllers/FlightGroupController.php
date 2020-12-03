@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\FlightsRetrieverService;
+use App\Models\FlightsGroupResource;
 use Illuminate\Http\Request;
 use Laravel\Lumen\Routing\Controller as BaseController;
 use App\Helpers\HttpHelper;
@@ -26,17 +27,12 @@ class FlightGroupController extends BaseController
             $filter = $request->getQueryString();
             $flightsList = $this->flightsRetrieverService->getFlights($filter);
             $groupsList = $this->flightsRetrieverService->getFlightsGroups();
-            $cheapestGroup = count($groupsList) ? $groupsList[0] : null;
-            return $this->httpHelper->ok(array(
-                'flights' => $flightsList,
-                'groups' => $groupsList,
-                'totalGroups' => count($groupsList),
-                'totalFlights' => count($flightsList),
-                'cheapestPrice' => $cheapestGroup ? $cheapestGroup->totalPrice : 0,
-                'cheapestGroup' => $cheapestGroup ? $cheapestGroup->uniqueId : 0,
-            ));
+            $resource = new FlightsGroupResource();
+            $resource->setFlights($flightsList);
+            $resource->setGroups($groupsList);
+            return $resource;
         } catch (Exception $e) {
-            return $this->httpHelper->badRequest();
+            return $this->httpHelper->badRequest($e);
         }
     }
 

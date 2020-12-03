@@ -13,12 +13,12 @@ class FlightsRetrieverService
     private $flights = null;
     private $filter = '';
     private $filterChanged = false;
+    private $baseUri = '';
 
-    public function __construct()
+    public function __construct(Client $client)
     {
-        $this->client = new Client([
-            'base_uri' => env('API_FLIGHTS'),
-        ]);
+        $this->client = $client;
+        $this->baseUri = env('API_FLIGHTS');
     }
 
     private function requestFlights()
@@ -26,7 +26,8 @@ class FlightsRetrieverService
         if (!$this->filterChanged && !empty($this->flights)) {
             return;
         }
-        $response = $this->client->request('GET', 'flights' . $this->filter);
+        $response = $this->client->request('GET', $this->baseUri . 'flights' . $this->filter);
+        // var_dump(get_class($response));die;
         $contentBody = $response->getBody()->getContents();
         $flightsData = json_decode($contentBody, true);
         $this->flights = array_map(function ($flightData) {
@@ -99,8 +100,8 @@ class FlightsRetrieverService
         // Combinacoes possiveis entre outbound e inbound
         $flightsGroupList = $this->makePossibleGroups($wrappers);
 
-        $flightsGroupList = collect($flightsGroupList)->sortBy('totalPrice');
+        $flightsGroupList = collect($flightsGroupList)->sortBy('totalPrice')->toArray();
 
-        return $flightsGroupList;
+        return array_values($flightsGroupList);
     }
 }

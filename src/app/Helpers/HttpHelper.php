@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-use Symfony\Component\HttpFoundation\JsonResponse;
+use Illuminate\Http\JsonResponse;
 
 class HttpHelper
 {
@@ -20,9 +20,13 @@ class HttpHelper
         return $this->createReponseError('No route found', 404);
     }
 
-    public function badRequest()
+    public function badRequest($e)
     {
-        return $this->createReponseError('Server error', 500);
+        $message = 'Server error';
+        // if (app()->environment('local') && $e->getMessage()) {
+            $message = $e->getMessage();
+        // }
+        return $this->createReponseError($message, 500);
     }
 
     public static function ok($data)
