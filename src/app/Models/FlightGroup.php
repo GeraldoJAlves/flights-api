@@ -21,32 +21,32 @@ class FlightGroup extends Model
 
     public static $uniqueId = 1;
 
-    public function addFlights(FlightType $flightType)
+    public function addFlights(FlightWrapper $flightWrapper)
     {
-        if (!count($flightType->flights)) {
+        if (!count($flightWrapper->flights)) {
             return false;
         }
 
         if (empty($this->fare)) {
             $this->attributes['uniqueId'] = self::$uniqueId++;
-            $this->fare = $flightType->fare;
+            $this->fare = $flightWrapper->fare;
         }
 
-        if (!$this->isValidFare($flightType)) {
+        if (!$this->isValidFare($flightWrapper)) {
             return false;
         }
-        $this->setFlights($flightType);
+        $this->setFlights($flightWrapper);
         return true;
     }
 
-    private function setFlights(FlightType $flightType)
+    private function setFlights(FlightWrapper $flightWrapper)
     {
-        if ($flightType->inbound) {
-            $this->priceInbound = $flightType->price;
-            $this->attributes['inbound'][] = $flightType->flights;
+        if ($flightWrapper->inbound) {
+            $this->priceInbound = $flightWrapper->price;
+            $this->attributes['inbound'][] = $flightWrapper->flights;
         } else {
-            $this->priceOutbound = $flightType->price;
-            $this->attributes['outbound'][] = $flightType->flights;
+            $this->priceOutbound = $flightWrapper->price;
+            $this->attributes['outbound'][] = $flightWrapper->flights;
         }
 
         $this->updateTotal();
@@ -57,8 +57,8 @@ class FlightGroup extends Model
         $this->attributes['totalPrice'] = $this->priceOutbound + $this->priceInbound;
     }
 
-    private function isValidFare(FlightType $flightType)
+    private function isValidFare(FlightWrapper $flightWrapper)
     {
-        return $this->fare === $flightType->fare;
+        return $this->fare === $flightWrapper->fare;
     }
 }

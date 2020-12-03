@@ -16,4 +16,4 @@ services:
     working_dir: /var/www/html/app/public
     command: php-fpm
     ports:
-      - "9000:9000"
+      - "9000"

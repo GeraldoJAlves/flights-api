@@ -4,15 +4,8 @@ namespace App\Models;
 
 use Jenssegers\Model\Model;
 
-class FlightType extends Model
+class FlightWrapper extends Model
 {
-    protected $primaryKey = 'id';
-
-    protected $fillable = [
-        'type',
-        'flights'
-    ];
-
     protected $attributes = [
         'fare' => null,
         'inbound' => 0,
