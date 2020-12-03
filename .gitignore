@@ -1,8 +1,8 @@
 
-src/vendor/
-src/.idea
-src/Homestead.json
-src/Homestead.yaml
-src/.env
-src/.phpunit.result.cache
+vendor/
+.idea
+Homestead.json
+Homestead.yaml
+.env
+.phpunit.result.cache
 .vscode

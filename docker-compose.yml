@@ -15,7 +15,7 @@ services:
     build: docker/php
     tty: true
     volumes:
-      - ./src:/var/www/html/app
+      - ./:/var/www/html/app
     working_dir: /var/www/html/app/public
     ports:
       - "9000"
