@@ -8,12 +8,14 @@ services:
       - php
     ports:
       - "80:80"
+    depends_on:
+      - php
   php:
     container_name: php
     build: docker/php
+    tty: true
     volumes:
       - ./src:/var/www/html/app
     working_dir: /var/www/html/app/public
-    command: php-fpm
     ports:
       - "9000"
