@@ -27,6 +27,7 @@ class FlightsGroupControllerTest extends TestCase
         $badRequest = $this->getFile('badRequest.json');
         $service = Mockery::mock(FlightsRetrieverService::class);
         $service->shouldReceive('getFlights')->once()->with('')->andReturn(new Exception());
+        $service->shouldReceive('getFlightsGroups')->once()->andReturn([]);
 
         $this->app->instance(FlightsRetrieverService::class, $service);
 

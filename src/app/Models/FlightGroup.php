@@ -19,7 +19,7 @@ class FlightGroup extends Model
         'inbound' => []
     ];
 
-    public static $uniqueId = 1;
+    private static $uniqueId = 1;
 
     public function addFlights(FlightWrapper $flightWrapper)
     {
@@ -60,5 +60,10 @@ class FlightGroup extends Model
     private function isValidFare(FlightWrapper $flightWrapper)
     {
         return $this->fare === $flightWrapper->fare;
+    }
+
+    public static function resetCount()
+    {
+        self::$uniqueId = 1;
     }
 }

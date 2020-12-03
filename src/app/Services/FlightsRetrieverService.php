@@ -30,9 +30,13 @@ class FlightsRetrieverService
         // var_dump(get_class($response));die;
         $contentBody = $response->getBody()->getContents();
         $flightsData = json_decode($contentBody, true);
-        $this->flights = array_map(function ($flightData) {
+        $flights = array_map(function ($flightData) {
             return new Flight($flightData);
         }, $flightsData);
+        $flights = array_filter($flights, function($flight) {
+            return !empty($flight->toArray());
+        });
+        $this->flights = $flights;
     }
 
     private function setFilter($filter)
@@ -99,7 +103,6 @@ class FlightsRetrieverService
 
         // Combinacoes possiveis entre outbound e inbound
         $flightsGroupList = $this->makePossibleGroups($wrappers);
-
         $flightsGroupList = collect($flightsGroupList)->sortBy('totalPrice')->toArray();
 
         return array_values($flightsGroupList);

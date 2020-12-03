@@ -186,7 +186,7 @@
     ]
   },
   {
-    "uniqueId": 5,
+    "uniqueId": 3,
     "totalPrice": 250,
     "outbound": [
       [
@@ -288,7 +288,7 @@
     ]
   },
   {
-    "uniqueId": 9,
+    "uniqueId": 5,
     "totalPrice": 270,
     "outbound": [
       [
@@ -354,7 +354,7 @@
     ]
   },
   {
-    "uniqueId": 6,
+    "uniqueId": 4,
     "totalPrice": 300,
     "outbound": [
       [
@@ -438,7 +438,7 @@
     ]
   },
   {
-    "uniqueId": 13,
+    "uniqueId": 7,
     "totalPrice": 300,
     "outbound": [
       [
@@ -504,7 +504,7 @@
     ]
   },
   {
-    "uniqueId": 10,
+    "uniqueId": 6,
     "totalPrice": 320,
     "outbound": [
       [
@@ -552,7 +552,7 @@
     ]
   },
   {
-    "uniqueId": 14,
+    "uniqueId": 8,
     "totalPrice": 350,
     "outbound": [
       [
@@ -591,120 +591,6 @@
           "arrivalTime": "10:00",
           "classService": 3,
           "price": 200,
-          "tax": 36,
-          "outbound": 0,
-          "inbound": 1,
-          "duration": "1:20"
-        }
-      ]
-    ]
-  },
-  {
-    "uniqueId": 19,
-    "totalPrice": 1500,
-    "outbound": [
-      [
-        {
-          "id": 15,
-          "cia": "AZUL",
-          "fare": "4DA",
-          "flightNumber": "AD-1234",
-          "origin": "CNF",
-          "destination": "BSB",
-          "departureDate": "29/01/2021",
-          "arrivalDate": "29/01/2021",
-          "departureTime": "20:40",
-          "arrivalTime": "22:00",
-          "classService": 3,
-          "price": 500,
-          "tax": 36,
-          "outbound": 1,
-          "inbound": 0,
-          "duration": "1:20"
-        }
-      ]
-    ],
-    "inbound": [
-      [
-        {
-          "id": 12,
-          "cia": "GOL",
-          "fare": "4DA",
-          "flightNumber": "G3-9999",
-          "origin": "BSB",
-          "destination": "CNF",
-          "departureDate": "30/01/2021",
-          "arrivalDate": "30/01/2021",
-          "departureTime": "20:40",
-          "arrivalTime": "22:00",
-          "classService": 3,
-          "price": 1000,
-          "tax": 36,
-          "outbound": 0,
-          "inbound": 1,
-          "duration": "1:20"
-        },
-        {
-          "id": 13,
-          "cia": "LATAM",
-          "fare": "4DA",
-          "flightNumber": "LA-9897",
-          "origin": "BSB",
-          "destination": "CNF",
-          "departureDate": "30/01/2021",
-          "arrivalDate": "30/01/2021",
-          "departureTime": "20:40",
-          "arrivalTime": "22:00",
-          "classService": 3,
-          "price": 1000,
-          "tax": 36,
-          "outbound": 0,
-          "inbound": 1,
-          "duration": "1:20"
-        }
-      ]
-    ]
-  },
-  {
-    "uniqueId": 20,
-    "totalPrice": 1700,
-    "outbound": [
-      [
-        {
-          "id": 15,
-          "cia": "AZUL",
-          "fare": "4DA",
-          "flightNumber": "AD-1234",
-          "origin": "CNF",
-          "destination": "BSB",
-          "departureDate": "29/01/2021",
-          "arrivalDate": "29/01/2021",
-          "departureTime": "20:40",
-          "arrivalTime": "22:00",
-          "classService": 3,
-          "price": 500,
-          "tax": 36,
-          "outbound": 1,
-          "inbound": 0,
-          "duration": "1:20"
-        }
-      ]
-    ],
-    "inbound": [
-      [
-        {
-          "id": 14,
-          "cia": "GOL",
-          "fare": "4DA",
-          "flightNumber": "G3-9897",
-          "origin": "BSB",
-          "destination": "CNF",
-          "departureDate": "30/01/2021",
-          "arrivalDate": "30/01/2021",
-          "departureTime": "20:40",
-          "arrivalTime": "22:00",
-          "classService": 3,
-          "price": 1200,
           "tax": 36,
           "outbound": 0,
           "inbound": 1,

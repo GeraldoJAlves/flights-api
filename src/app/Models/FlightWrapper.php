@@ -49,7 +49,6 @@ class FlightWrapper extends Model
     private function isValidFlight(Flight $flight)
     {
         $baseFlight = $this->baseFlight;
-
         return $baseFlight->fare === $flight->fare &&
             $baseFlight->price === $flight->price &&
             $baseFlight->outbound === $flight->outbound &&
