@@ -40,7 +40,7 @@
             "@php -r \"file_exists('.env') || copy('.env.local', '.env');\""
         ],
         "post-install-cmd": [
-            "@php -r \"file_exists('.env') || copy('.env.local', '.env');\"",
+            "@php -r \"file_exists('.env') || copy('.env.prod', '.env');\"",
             "chmod -R 777 public/"
         ]
     }
