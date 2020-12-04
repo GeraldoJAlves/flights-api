@@ -2,9 +2,7 @@
   - docker https://docs.docker.com/get-docker/
   - ocker-composer https://docs.docker.com/compose/install/
 
-*Obs caso seu docker precise rodar como root*
-*utilize o comando `sudo usermod -a -G docker $USER`*
-*para deixar colocar o docker no seu grupo de usuário também.*
+*Obs caso seu docker precise rodar como root utilize o comando `sudo usermod -a -G docker $USER` para colocar o docker no seu grupo de usuário também.*
 
 # Desenvolvimento
  - Execute o comando `./run.sh` para iniciar a aplicaçao
