@@ -33,7 +33,7 @@ class FlightsRetrieverService
             return new Flight($flightData);
         }, $flightsData);
         $flights = array_filter($flights, function($flight) {
-            return !empty($flight->toArray());
+            return $flight->isValid();
         });
         $this->flights = $flights;
     }

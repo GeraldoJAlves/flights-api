@@ -26,4 +26,18 @@ class Flight extends Model
         'inbound',
         'duration',
     ];
+
+    public function isValid()
+    {
+        $keys = array_keys($this->attributes);
+        if (
+            !isset($this->attributes['id']) ||
+            !isset($this->attributes['fare']) ||
+            !isset($this->attributes['price'])
+        ) {
+            return false;
+        }
+
+        return $this->attributes['id'] && $this->attributes['fare'] && $this->attributes['price'];
+    }
 }
