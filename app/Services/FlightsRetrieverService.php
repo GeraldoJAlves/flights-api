@@ -27,7 +27,6 @@ class FlightsRetrieverService
             return;
         }
         $response = $this->client->request('GET', $this->baseUri . 'flights' . $this->filter);
-        // var_dump(get_class($response));die;
         $contentBody = $response->getBody()->getContents();
         $flightsData = json_decode($contentBody, true);
         $flights = array_map(function ($flightData) {
@@ -52,6 +51,24 @@ class FlightsRetrieverService
         $this->setFilter($filter);
         $this->requestFlights();
         return $this->flights;
+    }
+
+    public function getFlightByID($id)
+    {
+        try {
+            $response = $this->client->request('GET', $this->baseUri . 'flights/' . $id);
+            $contentBody = $response->getBody()->getContents();
+            $flightData = json_decode($contentBody, true);
+            return new Flight($flightData);
+        } catch(\GuzzleHttp\Exception\RequestException $e) {
+            if($e->hasResponse()){
+                if ($e->getResponse()->getStatusCode() === 404) {
+                    return [];
+                }
+            }
+            throw $e;
+        } 
+        return [];
     }
 
 

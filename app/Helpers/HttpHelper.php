@@ -23,14 +23,15 @@ class HttpHelper
     public function badRequest($e)
     {
         $message = 'Server error';
-        // if (app()->environment('local') && $e->getMessage()) {
+        if (app()->environment('local') && $e->getMessage()) {
             $message = $e->getMessage();
-        // }
+        }
         return $this->createReponseError($message, 500);
     }
 
     public static function ok($data)
     {
-        return new JsonResponse($data, 200);
+        $code = empty($data) ? 404 : 200;
+        return new JsonResponse($data, $code);
     }
 }

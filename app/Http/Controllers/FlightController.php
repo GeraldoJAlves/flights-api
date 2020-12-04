@@ -33,8 +33,13 @@ class FlightController extends BaseController
 
     public function getById(Request $request, $id)
     {
-        $filter = $request->getQueryString();
-        if ($filter) $filter = '?' . $filter;
-        return redirect(env('API_FLIGHTS') . "flights/${id}${filter}");
+        try {
+            $filter = $request->getQueryString();
+            $fligth = $this->flightsRetrieverService->getFlightByID($id);
+            return $this->httpHelper->ok($fligth);
+        } catch(Exception $e) {
+            return $this->httpHelper->badRequest($e);
+        }
     }
+
 }
