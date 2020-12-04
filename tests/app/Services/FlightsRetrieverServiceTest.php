@@ -94,4 +94,31 @@ class FlightsRetrieverServiceTest extends TestCase
         $resGroups = $sut->getFlightsGroups();
         $this->assertEquals(json_encode($resGroups[0]), json_encode($groups[0]));
     }
+
+    public function testWhenFlightIdExists()
+    {
+        $flights = $this->getFile('flights.json');
+
+        $sut = $this->makeSut(200, $flights[0]);
+        $resFlight = $sut->getFlightByID($flights[0]['id']);
+        $this->assertEquals(json_encode($resFlight), json_encode($flights[0]));
+    }
+
+    public function testWhenFlightIdNotExists()
+    {
+
+        $sut = $this->makeSut(404, []);
+        $resFlight = $sut->getFlightByID(12);
+        $this->assertEquals(json_encode($resFlight), json_encode([]));
+    }
+
+    public function testWhenFlightIdThrows()
+    {
+        
+        $sut = $this->makeSut(500, []);
+
+        $this->expectException(GuzzleHttp\Exception\ServerException::class);
+        $resFlight = $sut->getFlightByID(12);
+    }
+
 }
