@@ -7,7 +7,7 @@
 # Desenvolvimento
  - Execute o comando `./run.sh` para iniciar a aplicaçao
  
-*Na primiera execução pode demorar um pouco para baixar as imagens e fazer o composer install*
+*Na primiera execução pode demorar um pouco para baixar as imagens do docker e fazer o composer install*
 
 # Testes
 - Execute o comando `./tests.sh` para rodar todos os testes
