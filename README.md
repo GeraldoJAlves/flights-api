@@ -13,6 +13,6 @@
 - Execute o comando `./tests.sh` para rodar todos os testes
 
 # Documentacao API
-
+- 
 - Collection Postman https://www.postman.com/collections/87f8484906594161c023
 
