@@ -1,8 +1,6 @@
 #!/bin/sh
 
-cd /var/www/html/app
-
-if [ -z "$(ls -A vender)"]; then
+if [ -z "$(ls -A vendor)"]; then
   cp .env.local .env
   echo "Instalando dependencias"
   composer install --no-progress --no-suggest -q --no-interaction

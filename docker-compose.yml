@@ -16,6 +16,6 @@ services:
     tty: true
     volumes:
       - ./:/var/www/html/app
-    working_dir: /var/www/html/app/public
+    working_dir: /var/www/html/app
     ports:
       - "9000"

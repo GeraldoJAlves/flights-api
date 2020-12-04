@@ -1,2 +1,2 @@
 echo Running tests
-docker-compose exec php cd..;php vendor/bin/phpunit 
+docker-compose exec php php vendor/bin/phpunit
