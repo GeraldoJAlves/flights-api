@@ -5,62 +5,17 @@
         "outbound": [
             [
                 {
-                    "id": 15,
-                    "cia": "AZUL",
-                    "fare": "4DA",
-                    "flightNumber": "AD-1234",
-                    "origin": "CNF",
-                    "destination": "BSB",
-                    "departureDate": "29/01/2021",
-                    "arrivalDate": "29/01/2021",
-                    "departureTime": "20:40",
-                    "arrivalTime": "22:00",
-                    "classService": 3,
-                    "price": 500,
-                    "tax": 36,
-                    "outbound": 1,
-                    "inbound": 0,
-                    "duration": "1:20"
+                    "id": 15
                 }
             ]
         ],
         "inbound": [
             [
                 {
-                    "id": 12,
-                    "cia": "GOL",
-                    "fare": "4DA",
-                    "flightNumber": "G3-9999",
-                    "origin": "BSB",
-                    "destination": "CNF",
-                    "departureDate": "30/01/2021",
-                    "arrivalDate": "30/01/2021",
-                    "departureTime": "20:40",
-                    "arrivalTime": "22:00",
-                    "classService": 3,
-                    "price": 1000,
-                    "tax": 36,
-                    "outbound": 0,
-                    "inbound": 1,
-                    "duration": "1:20"
+                    "id": 12
                 },
                 {
-                    "id": 13,
-                    "cia": "LATAM",
-                    "fare": "4DA",
-                    "flightNumber": "LA-9897",
-                    "origin": "BSB",
-                    "destination": "CNF",
-                    "departureDate": "30/01/2021",
-                    "arrivalDate": "30/01/2021",
-                    "departureTime": "20:40",
-                    "arrivalTime": "22:00",
-                    "classService": 3,
-                    "price": 1000,
-                    "tax": 36,
-                    "outbound": 0,
-                    "inbound": 1,
-                    "duration": "1:20"
+                    "id": 13
                 }
             ]
         ]
@@ -71,44 +26,14 @@
         "outbound": [
             [
                 {
-                    "id": 15,
-                    "cia": "AZUL",
-                    "fare": "4DA",
-                    "flightNumber": "AD-1234",
-                    "origin": "CNF",
-                    "destination": "BSB",
-                    "departureDate": "29/01/2021",
-                    "arrivalDate": "29/01/2021",
-                    "departureTime": "20:40",
-                    "arrivalTime": "22:00",
-                    "classService": 3,
-                    "price": 500,
-                    "tax": 36,
-                    "outbound": 1,
-                    "inbound": 0,
-                    "duration": "1:20"
+                    "id": 15
                 }
             ]
         ],
         "inbound": [
             [
                 {
-                    "id": 14,
-                    "cia": "GOL",
-                    "fare": "4DA",
-                    "flightNumber": "G3-9897",
-                    "origin": "BSB",
-                    "destination": "CNF",
-                    "departureDate": "30/01/2021",
-                    "arrivalDate": "30/01/2021",
-                    "departureTime": "20:40",
-                    "arrivalTime": "22:00",
-                    "classService": 3,
-                    "price": 1200,
-                    "tax": 36,
-                    "outbound": 0,
-                    "inbound": 1,
-                    "duration": "1:20"
+                    "id": 14
                 }
             ]
         ]

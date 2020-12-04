@@ -43,7 +43,7 @@ class FlightWrapper extends Model
 
     private function addFlightList(Flight $flight)
     {
-        $this->attributes['flights'][] = $flight;
+        $this->attributes['flights'][] = ['id' => $flight->id];
     }
 
     private function isValidFlight(Flight $flight)
