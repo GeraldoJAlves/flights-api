@@ -6,13 +6,12 @@
 * utilize o comando `sudo usermod -a -G docker $USER`
 * para deixar colocar o docker no seu grupo de usuário também.
 
-# Development
+# Desenvolvimento
  - Execute o comando `./run.sh` para iniciar a aplicaçao
 
-# Tests
+# Testes
 - Execute o comando `./tests.sh` para rodar todos os testes
 
 # Documentacao API
-- 
 - Collection Postman https://www.postman.com/collections/87f8484906594161c023
 
