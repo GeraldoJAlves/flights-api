@@ -1,10 +1,18 @@
 # Pre-requisitos
-  - docker
-  - docker-composer
+  - docker https://docs.docker.com/get-docker/
+  - ocker-composer https://docs.docker.com/compose/install/
 
-# Enviroment Development
- - rode o comando para iniciar a aplicaçao 'run.sh'
+* Obs caso seu docker precise rodar como root
+* utilize o comando `sudo usermod -a -G docker $USER`
+* para deixar colocar o docker no seu grupo de usuário também.
 
-# Documentacao
-https://web.postman.co/collection/13724324-7b96edae-5353-4fe5-8dd8-a8ce1493cc02
+# Development
+ - Execute o comando `./run.sh` para iniciar a aplicaçao
+
+# Tests
+- Execute o comando `./tests.sh` para rodar todos os testes
+
+# Documentacao API
+
+- Collection Postman https://www.postman.com/collections/87f8484906594161c023
 
