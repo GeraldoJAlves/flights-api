@@ -65,6 +65,14 @@ class FlightsRetrieverServiceTest extends TestCase
         $this->assertEquals($sut->getFlights(), []);
     }
 
+    public function testWhenResponseGuzzeReturnInvalidFlights()
+    {
+        $res = [['id'=> 1]];
+
+        $sut = $this->makeSut(200, $res);
+        $this->assertEquals($sut->getFlights(), []);
+    }
+
     public function testGetGroupFlights()
     {
         $flights = $this->getFile('flights.json');
